@@ -1,0 +1,26 @@
+{
+    "name": "mralston/laravel-additional-string-helpers",
+    "description": "Adds additional helpers to Laravel's Str and Stringable helpers.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Matt Ralston",
+            "email": "matt@mralston.co.uk"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MRalston\\LaravelAdditionalStringHelpers\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MRalston\\LaravelAdditionalStringHelpers\\ServiceProvider"
+            ]
+        }
+    }
+}
