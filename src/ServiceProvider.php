@@ -40,5 +40,15 @@ class ServiceProvider extends BaseServiceProvider
         Stringable::macro('pluralPhrase', function () {
             return new static(Str::pluralPhrase($this->value));
         });
+
+        Str::macro('humanise', function ($value) {
+            return (string)self::of($value)
+                ->kebab()
+                ->replace(['-', '_'], ' ');
+        });
+
+        Stringable::macro('humanise', function () {
+            return new static(Str::humanise($this->value));
+        });
     }
 }

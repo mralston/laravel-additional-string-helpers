@@ -19,3 +19,5 @@ The package will automatically register itself.
 - `Str::markdown()`
 - `Str::pluralPhrase()`
 - `Stringable::pluralPhrase()` usage: `Str::of('the item')->pluralPhrase()`
+- `Str::humanise()`
+- `Stringable::humanise()` usage: `Str::of('the_item')->humanise()`
