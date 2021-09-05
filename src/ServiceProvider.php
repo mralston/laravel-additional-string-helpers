@@ -42,7 +42,7 @@ class ServiceProvider extends BaseServiceProvider
         });
 
         Str::macro('humanise', function ($value) {
-            return (string)self::of($value)
+            return self::of($value)
                 ->kebab()
                 ->replace(['-', '_'], ' ');
         });
