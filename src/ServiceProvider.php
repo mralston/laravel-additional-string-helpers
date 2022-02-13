@@ -50,5 +50,19 @@ class ServiceProvider extends BaseServiceProvider
         Stringable::macro('humanise', function () {
             return new static(Str::humanise($this->value));
         });
+
+        Str::macro('matchAllFull', function ($pattern, $subject) {
+            preg_match_all($pattern, $subject, $matches);
+
+            if (empty($matches[0])) {
+                return collect();
+            }
+
+            return collect([$matches[1], $matches[2]]);
+        });
+
+        Stringable::macro('matchAllFull', function ($pattern) {
+            return Str::matchAllFull($pattern, $this->value);
+        });
     }
 }
