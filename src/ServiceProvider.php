@@ -2,6 +2,7 @@
 
 namespace MRalston\LaravelAdditionalStringHelpers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
@@ -15,6 +16,12 @@ class ServiceProvider extends BaseServiceProvider
     }
 
     public function boot()
+    {
+        $this->stringHelpers();
+        $this->bladeHelpers();
+    }
+
+    private function stringHelpers()
     {
         Str::macro('markdown', function ($content) {
             $converter = new GithubFlavoredMarkdownConverter([
@@ -63,6 +70,13 @@ class ServiceProvider extends BaseServiceProvider
 
         Stringable::macro('matchAllFull', function ($pattern) {
             return Str::matchAllFull($pattern, $this->value);
+        });
+    }
+
+    private function bladeHelpers()
+    {
+        Blade::directive('nl2br', function ($text) {
+            return '<?php echo(nl2br(e(' . $text . '))); ?>';
         });
     }
 }
