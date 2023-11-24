@@ -71,6 +71,19 @@ class ServiceProvider extends BaseServiceProvider
         Stringable::macro('matchAllFull', function ($pattern) {
             return Str::matchAllFull($pattern, $this->value);
         });
+
+        
+        if (!method_exists(Str::class, 'squish') {
+            Str::macro('squish', function ($value) {
+                return preg_replace('~(\s|\x{3164}|\x{1160})+~u', ' ', preg_replace('~^[\s\x{FEFF}]+|[\s\x{FEFF}]+$~u', '', $value));
+            });
+        }
+
+        if (!method_exists(Stringable::class, 'squish') {
+            Stringable::macro('squish', function () {
+                return new static(Str::squish($this->value));
+            });
+        }
     }
 
     private function bladeHelpers()
