@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 namespace MRalston\LaravelAdditionalStringHelpers;
 
 use Illuminate\Support\Facades\Blade;
